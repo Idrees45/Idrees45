@@ -5,15 +5,23 @@ const express= require ('express');
 const usermodel= require('./models/adminmodel')
 const router= require("./routes/router")
 const cookieParser = require('cookie-parser');
+
 const cors=require('cors')
 //middelware
 // CORS configuration
 
-app.use(cors({
-    origin: 'http://localhost:5173', // Your frontend URL
-    credentials: true,
 
+app.use(cors({
+  origin: 'http://localhost:5173', // Replace with your frontend URL
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  credentials: true
 }));
+
+
+app.use('/uploads', express.static('uploads'));
+
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(cookieParser());

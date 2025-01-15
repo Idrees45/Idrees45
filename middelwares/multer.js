@@ -10,7 +10,9 @@ var storage = multer.diskStorage({
   }, 
   filename: function (req, file, cb) { 
 // It is the filename that is given to the saved file.
-cb(null, file.originalname);
+//cb(null, file.originalname);
+const uniqueName = `${Date.now()}-${file.originalname}`;
+cb(null, uniqueName);
   }
 });
 
